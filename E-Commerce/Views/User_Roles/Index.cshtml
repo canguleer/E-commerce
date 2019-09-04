@@ -1,0 +1,43 @@
+﻿@model IEnumerable<E_Commerce.Models.User_Roles>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container pb-5">
+    <h2 style="text-align:center;">User Roles</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Role.role1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.userName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.role1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.userName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

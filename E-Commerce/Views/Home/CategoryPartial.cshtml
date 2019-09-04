@@ -1,0 +1,34 @@
+﻿@model IEnumerable<E_Commerce.Models.Category>
+
+@{
+    ViewBag.Title = "CategoryPartial";
+    Layout = null;
+}
+
+
+
+
+
+
+<ul id="sideManu" class="nav nav-tabs nav-stacked">
+    <li>
+        <a href="/Home/HomeListProduct/" id="demo" onclick="myFunction()">All Categories (@Model.Count())</a>
+    </li>
+
+    @foreach (var item in Model)
+    {
+        <li><a href="/CategoryList/Index/@item.categori_id">@item.categoryName (@item.Product.Count())</a></li>
+    }
+</ul>
+
+
+
+
+
+<script>
+    function myFunction() {
+        document.getElementById("demo").style.color = "red";
+
+    }
+
+</script>

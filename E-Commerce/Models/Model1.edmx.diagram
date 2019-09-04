@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e969bec284af4f7c990e028016fd1b4d" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="Model.Bills" Width="1.5" PointX="9" PointY="18.75" />
+        <EntityTypeShape EntityType="Model.Brand" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="Model.Campaign" Width="1.5" PointX="8.25" PointY="12.75" />
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="3.75" PointY="6.125" />
+        <EntityTypeShape EntityType="Model.Model" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="11.25" PointY="7.625" />
+        <EntityTypeShape EntityType="Model.Order_Status" Width="1.5" PointX="13.5" PointY="11.25" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="6" PointY="7.25" />
+        <EntityTypeShape EntityType="Model.Product_Detail" Width="1.5" PointX="8.25" PointY="5.625" />
+        <EntityTypeShape EntityType="Model.Product_Order" Width="1.5" PointX="13.5" PointY="8.375" />
+        <EntityTypeShape EntityType="Model.Product_Photo" Width="1.5" PointX="8.25" PointY="15.875" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="9" PointY="21.125" />
+        <EntityTypeShape EntityType="Model.Shipper" Width="1.5" PointX="9" PointY="2.25" />
+        <EntityTypeShape EntityType="Model.Supplier" Width="1.5" PointX="3.75" PointY="11.375" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="9" PointY="8.5" />
+        <EntityTypeShape EntityType="Model.User_Roles" Width="1.5" PointX="11.25" PointY="12" />
+        <AssociationConnector Association="Model.FK_Order_Bills" />
+        <AssociationConnector Association="Model.FK_Model_Brand" />
+        <AssociationConnector Association="Model.FK_Product_Brand" />
+        <AssociationConnector Association="Model.FK_Campaign_Product" />
+        <AssociationConnector Association="Model.FK_Product_Category" />
+        <AssociationConnector Association="Model.FK_Order_Product" />
+        <AssociationConnector Association="Model.FK_Order_Shipper" />
+        <AssociationConnector Association="Model.FK_Order_Status_Order" />
+        <AssociationConnector Association="Model.FK_Order_User" />
+        <AssociationConnector Association="Model.FK_Product_Order_Order" />
+        <AssociationConnector Association="Model.FK_Product_Detail_Product" />
+        <AssociationConnector Association="Model.FK_Product_Order_Product" />
+        <AssociationConnector Association="Model.FK_Product_Photo_Product" />
+        <AssociationConnector Association="Model.FK_Product_Supplier" />
+        <AssociationConnector Association="Model.FK_User_Roles_Role" />
+        <AssociationConnector Association="Model.FK_User_Roles_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

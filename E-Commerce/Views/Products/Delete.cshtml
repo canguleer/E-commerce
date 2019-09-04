@@ -1,0 +1,100 @@
+﻿@model E_Commerce.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container pb-5">
+    <h2 style="text-align:center;">Product Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.productName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.productName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.quantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.productViewed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.productViewed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.productIsProved)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.productIsProved)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.photo)
+            </dt>
+
+            <dd>
+                <img width="75" height="80" src="@Model.photo" alt="Alternate Text" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Brand.brandName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Brand.brandName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.categoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.categoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Supplier.companyName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Supplier.companyName)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-warning" })
+            </div>
+
+        }
+    </div>
+</div>

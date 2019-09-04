@@ -1,0 +1,91 @@
+﻿@model E_Commerce.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.productName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productIsProved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productIsProved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productViewed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productViewed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.brandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.brandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.categoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.categoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier.companyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supplier.companyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

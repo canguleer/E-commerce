@@ -1,0 +1,181 @@
+﻿@model E_Commerce.Models.Product
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <div id="mainBody">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar ================================================== -->
+                <div id="sidebar" class="span3">
+                    <div class="well well-small"><a id="myCart" href="@Url.Action("ProductCart","Home")"><img src="~/Content/themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+                    @using (Html.BeginForm("ProductSearch", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <div class="input-group">
+                            <input class="form-control" name="Search" type="text" placeholder="Search" aria-label="Search" style="width:255px;">
+
+                        </div>
+
+                    }
+                    <h3 style="text-align:center; color:white; background-color:#acacac;">Categories</h3>
+
+
+                    @{
+
+                        Html.RenderAction("CategoryPartial", "Home");
+                    }
+
+                    <br />
+                    <h3 style="text-align:center; color:white; background-color:#acacac;">Brands</h3>
+
+                    @{
+
+                        Html.RenderAction("BrandPartial", "Home");
+                    }
+
+
+                </div>
+                <!-- Sidebar end=============================================== -->
+                <div class="span9" style="margin-bottom:10px;">
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                        <li><a href="products.html">Products</a> <span class="divider">/</span></li>
+                        <li class="active"></li>
+                    </ul>
+                    <div class="row">
+                        <div id="gallery" class="span3">
+                            <a href="@Model.photo" title="@Model.productName">
+                                <img src="@Model.photo" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
+                            </a>
+                            <div id="differentview" class="moreOptopm carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        @foreach (var item in Model.Product_Photo)
+                                        {
+                                            <a href="@item.photo"> <img style="width:29%" src="@item.photo" alt="" /></a>
+
+                                        }
+
+                                    </div>
+                                    <div class="item">
+                                        @foreach (var item in Model.Product_Photo)
+                                        {
+                                            <a href="@item.photo"> <img style="width:29%" src="@item.photo" alt="" /></a>
+
+                                        }
+                                    </div>
+                                </div>
+                                
+                               
+                            </div>
+
+                           
+                        </div>
+                        <div class="span6">
+                            <h3>@Model.productName</h3>
+                            <small>@Model.Product_Detail.Select(s=>s.properties).FirstOrDefault()</small>
+                            <hr class="soft" />
+                            <form class="form-horizontal qtyFrm">
+                                <div class="control-group">
+                                    <label class="control-label"><span>$@Model.price</span></label>
+                                    <div class="controls">
+                                        <input type="number" class="span1" placeholder="Qty." />
+                                        <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <hr class="soft" />
+                            <h4>100 items in stock</h4>
+                            
+                            <hr class="soft clr" />
+                            <p>
+                               @Model.Product_Detail.Select(s => s.propertiesDetail).FirstOrDefault()
+
+                            </p>
+                            
+                            <br class="clr" />
+                            <a href="#" name="detail"></a>
+                            <hr class="soft" />
+                        </div>
+
+              
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MainBody End ============================= -->
+    <!-- Footer ================================================================== -->
+
+
+    <!-- Placed at the end of the document so the pages load faster ============================================= -->
+   
+
+
+    <!-- Themes switcher section ============================================================================================= -->
+    <div id="secectionBox">
+        <link rel="stylesheet" href="~/Content/themes/switch/themeswitch.css" type="text/css" media="screen" />
+        <script src="~/Content/themes/switch/theamswitcher.js" type="text/javascript" charset="utf-8"></script>
+        <div id="themeContainer">
+            <div id="hideme" class="themeTitle">Style Selector</div>
+            <div class="themeName">Oregional Skin</div>
+            <div class="images style">
+                <a href="~/Content/themes/css/#" name="bootshop"><img src="~/Content/themes/switch/images/clr/bootshop.png" alt="bootstrap business templates" class="active"></a>
+                <a href="~/Content/themes/css/#" name="businessltd"><img src="~/Content/themes/switch/images/clr/businessltd.png" alt="bootstrap business templates" class="active"></a>
+            </div>
+            <div class="themeName">Bootswatch Skins (11)</div>
+            <div class="images style">
+                <a href="~/Content/themes/css/#" name="amelia" title="Amelia"><img src="~/Content/themes/switch/images/clr/amelia.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="spruce" title="Spruce"><img src="~/Content/themes/switch/images/clr/spruce.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="superhero" title="Superhero"><img src="~/Content/themes/switch/images/clr/superhero.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="cyborg"><img src="~/Content/themes/switch/images/clr/cyborg.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="cerulean"><img src="~/Content/themes/switch/images/clr/cerulean.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="journal"><img src="~/Content/themes/switch/images/clr/journal.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="readable"><img src="~/Content/themes/switch/images/clr/readable.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="simplex"><img src="~/Content/themes/switch/images/clr/simplex.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="slate"><img src="~/Content/themes/switch/images/clr/slate.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="spacelab"><img src="~/Content/themes/switch/images/clr/spacelab.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="united"><img src="~/Content/themes/switch/images/clr/united.png" alt="bootstrap business templates"></a>
+                <p style="margin:0;line-height:normal;margin-left:-10px;display:none;"><small>These are just examples and you can build your own color scheme in the backend.</small></p>
+            </div>
+            <div class="themeName">Background Patterns </div>
+            <div class="images patterns">
+                <a href="~/Content/themes/css/#" name="pattern1"><img src="~/Content/themes/switch/images/pattern/pattern1.png" alt="bootstrap business templates" class="active"></a>
+                <a href="~/Content/themes/css/#" name="pattern2"><img src="~/Content/themes/switch/images/pattern/pattern2.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern3"><img src="~/Content/themes/switch/images/pattern/pattern3.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern4"><img src="~/Content/themes/switch/images/pattern/pattern4.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern5"><img src="~/Content/themes/switch/images/pattern/pattern5.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern6"><img src="~/Content/themes/switch/images/pattern/pattern6.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern7"><img src="~/Content/themes/switch/images/pattern/pattern7.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern8"><img src="~/Content/themes/switch/images/pattern/pattern8.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern9"><img src="~/Content/themes/switch/images/pattern/pattern9.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern10"><img src="~/Content/themes/switch/images/pattern/pattern10.png" alt="bootstrap business templates"></a>
+
+                <a href="~/Content/themes/css/#" name="pattern11"><img src="~/Content/themes/switch/images/pattern/pattern11.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern12"><img src="~/Content/themes/switch/images/pattern/pattern12.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern13"><img src="~/Content/themes/switch/images/pattern/pattern13.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern14"><img src="~/Content/themes/switch/images/pattern/pattern14.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern15"><img src="~/Content/themes/switch/images/pattern/pattern15.png" alt="bootstrap business templates"></a>
+
+                <a href="~/Content/themes/css/#" name="pattern16"><img src="~/Content/themes/switch/images/pattern/pattern16.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern17"><img src="~/Content/themes/switch/images/pattern/pattern17.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern18"><img src="~/Content/themes/switch/images/pattern/pattern18.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern19"><img src="~/Content/themes/switch/images/pattern/pattern19.png" alt="bootstrap business templates"></a>
+                <a href="~/Content/themes/css/#" name="pattern20"><img src="~/Content/themes/switch/images/pattern/pattern20.png" alt="bootstrap business templates"></a>
+
+            </div>
+        </div>
+    </div>
+    <span id="themesBtn"></span>
+</body>
+</html>
+

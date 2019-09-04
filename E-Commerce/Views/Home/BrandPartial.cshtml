@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<E_Commerce.Models.Brand>
+
+@{
+    ViewBag.Title = "BrandPartial";
+    Layout = null;
+}
+
+
+
+
+<ul id="sideManu" class="nav nav-tabs nav-stacked">
+
+    @foreach (var item in Model)
+    {
+        <li><a href="/BrandList/Index/@item.brand_id">@item.brandName (@item.Product.Count())</a></li>
+    }
+</ul>
+
+
+
+
+
+
+
+
+
+@*<h2>CategoryPartial</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.categoryName)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.categori_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.categori_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.categori_id })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+

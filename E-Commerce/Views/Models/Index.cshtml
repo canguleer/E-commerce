@@ -1,0 +1,51 @@
+﻿@model IEnumerable<E_Commerce.Models.Model>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+}
+<div class="container pb-5">
+    <h2 style="text-align:center;">Models</h2>
+
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.modelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand.brandName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.brandName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.model_id }, new { @class = "btn btn-success" })
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.model_id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

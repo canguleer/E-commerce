@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <div id="mainBody">
+        <div class="container">
+            <div class="row" style="margin-bottom:20px;">
+
+                <div class="span12">
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                        <li class="active">Registration</li>
+                    </ul>
+                    <h3 style="text-align:center;"> Register</h3>
+                    <div class="span6" style="margin-left:290px;">
+                        <div class="well">
+                   
+                            <form class="form-horizontal">
+                                @Html.AntiForgeryToken() 
+                                
+                                <div class="control-group">
+                                    <label class="control-label" for="inputFname">Name <sup>*</sup></label>
+                                    <div class="controls">
+                                        <input type="text" id="inputFname" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputSurname">Surname <sup>*</sup></label>
+                                    <div class="controls">
+                                        <input type="text" id="inputSurname" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputUsername">User Name <sup>*</sup></label>
+                                    <div class="controls">
+                                        <input type="text" id="inputUsername" placeholder="User Name">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+                                    <div class="controls">
+                                        <input type="email" id="inputEmail" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputPassword">Password <sup>*</sup></label>
+                                    <div class="controls">
+                                        <input type="password" id="inputPassword" placeholder="Password" required="required">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputRePassword">Re Password <sup>*</sup></label>
+                                    <div class="controls">
+                                        <input type="password" id="inputRePassword" placeholder=" RePassword" required="required">
+                                    </div>
+                                </div>
+
+
+                                <div class="control-group">
+                                    <label class="control-label" for="inputPhone">Phone <sup>*</sup></label>
+                                    <div class="controls">
+                                        <input type="text" id="inputPhone" placeholder="Phone" required="required">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <a class="btn btn-primary btn-block" href="#" id="KayitOl"> Register </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        $('#KayitOl').on('click', function () {
+
+            var token = $('input[name="__RequestVerificationToken"]').val();
+  
+        var adi = $('#inputFname').val();
+        var soyadi = $('#inputSurname').val();
+        var email = $('#inputEmail').val();
+        var kullaniciAdi = $('#inputUsername').val();
+        var tel = $('#inputPhone').val();
+        var sifre = $('#inputPassword').val();
+        var sifreTekrar = $('#inputRePassword').val();
+
+        if (kullaniciAdi == "" || adi == "" || soyadi == "" || email == "" || sifre == "" || tel == "" || sifreTekrar=="" ) {
+            alert("Lütfen boş alan bırakmayınız");
+            return;
+        }
+            $.post('@Url.Action("Register", "Account")', { '__RequestVerificationToken': token, 'email': email, 'password': sifre, 'rePassword': sifreTekrar, 'userName': kullaniciAdi, 'name': adi, 'surName': soyadi, 'phone': tel }, function (results) {
+              
+            if (results == "olumlu") {
+                window.location.href = "/Home/Index";
+            }
+            else {
+                alert("İşlem de eksik parametresi bırakmayın!");
+            }
+
+        });
+    });
+    </script>
+
+
+}
+

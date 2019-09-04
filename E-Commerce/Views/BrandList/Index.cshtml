@@ -1,0 +1,118 @@
+﻿
+@model IEnumerable<E_Commerce.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <!-- Header End====================================================================== -->
+    <div id="mainBody">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar ================================================== -->
+                <div id="sidebar" class="span3">
+                    <div class="well well-small"><a id="myCart" href="@Url.Action("ProductSummary","Home")"><img src="~/Content/themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+                    @using (Html.BeginForm("ProductSearch", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <div class="input-group">
+                            <input class="form-control" name="Search" type="text" placeholder="Search" aria-label="Search" style="width:255px;">
+
+                        </div>
+
+                    }
+                    <h3 style="text-align:center; color:white; background-color:#acacac;">Categories</h3>
+
+                    @{
+
+                        Html.RenderAction("CategoryPartial", "Home");
+                    }
+
+                    <br />
+                    <h3 style="text-align:center; color:white; background-color:#acacac;">Brands</h3>
+
+                    @{
+
+                        Html.RenderAction("BrandPartial", "Home");
+                    }
+
+                </div>
+                <!-- Sidebar end=============================================== -->
+                <div class="span9">
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                        <li class="active">@Model.Select(m => m.Brand.brandName).FirstOrDefault()</li>
+                    </ul>
+                    <h3> @Model.Select(m => m.Brand.brandName).FirstOrDefault() <small class="pull-right">@Model.Count() Products are available </small></h3>
+                    <hr class="soft" />
+
+                    @if (Model.Count() == 0)
+                    {
+
+                        <div class="alert alert-primary" role="alert">
+                            There is no product in this brands! to be added soon!
+                        </div>
+                    }
+
+
+
+                    <br class="clr" />
+                    <div class="tab-content">
+
+                        <div class="tab-pane  active" id="blockView">
+                            <ul class="thumbnails">
+                                @foreach (var item in Model)
+                                {
+                                    <li class="span3">
+                                        <div class="thumbnail">
+                                            <a href="/Home/ProductDetail/@item.product_id"><img src="@item.photo" style="width:160px; height:160px;" alt="" /></a>
+                                            <div class="caption">
+                                                <h5>@item.productName &amp; @item.quantity</h5>
+                                                <p>
+                                                    @item.productName
+                                                </p>
+                                                <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;@item.price</a></h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+
+
+                            </ul>
+
+
+                            <hr class="soft" />
+                        </div>
+                    </div>
+
+                    @if (Model.Count() != 0)
+                    {
+                        <div class="pagination">
+                            <ul>
+                                <li><a href="#">&lsaquo;</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">...</a></li>
+                                <li><a href="#">&rsaquo;</a></li>
+                            </ul>
+                        </div>
+                    }
+
+                    <br class="clr" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+
